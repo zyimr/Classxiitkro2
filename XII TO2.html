@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas XII TKRO 2 - SMKN 1 Luragung</title>
+    <style>
+        /* Reset CSS dan Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Warna Utama */
+        :root {
+            --biru-muda: #e3f2fd;
+            --putih: #ffffff;
+            --biru-tua: #2196f3;
+            --abu-tersier: #f5f5f5;
+        }
+
+        body {
+            background-color: var(--abu-tersier);
+            color: #333;
+        }
+
+        /* Navigasi */
+        nav {
+            background-color: var(--biru-muda);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--biru-tua);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--biru-tua);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Konten Utama */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background-color: var(--putih);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: var(--biru-tua);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Halaman Utama */
+        .home-content {
+            text-align: center;
+            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sambutan {
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .foto-kelas {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Profil Kelas */
+        .profil-wali, .daftar-siswa {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .daftar-siswa h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--biru-tua);
+        }
+
+        .daftar-siswa ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem; /* Jarak antar nama */
+        }
+
+        .daftar-siswa li {
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            background-color: var(--abu-tersier);
+            transition: background-color 0.3s;
+        }
+
+        .daftar-siswa li:hover {
+            background-color: #d0e8ff; /* Warna lebih muda saat hover */
+        }
+
+
+        /* Jadwal Pelajaran */
+        .jadwal-tabel {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .jadwal-tabel th, .jadwal-tabel td {
+            border: 1px solid #ddd;
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        .jadwal-tabel th {
+            background-color: var(--biru-muda);
+            color: var(--biru-tua);
+        }
+
+        /* Kegiatan */
+        .kegiatan-card {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: linear-gradient(to bottom, var(--putih), #edf5ff); /* Gradasi Latar */
+        }
+
+        .kegiatan-foto {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* Kontak */
+        .kontak-link {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .kontak-link a {
+            text-decoration: none;
+            color: var(--biru-tua);
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .kontak-link a:hover {
+            opacity: 0.8;
+        }
+
+        /* Ikon Sekolah */
+        .icon {
+            font-size: 2rem;
+            color: var(--biru-tua);
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--biru-muda);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            color: var(--biru-tua);
+        }
+
+        /* Responsif Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                background-color: var(--biru-muda);
+                width: 100%;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                transition: left 0.3s;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .jadwal-tabel th, .jadwal-tabel td {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            .daftar-siswa ul {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Lebih kecil di mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigasi -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">XII TKRO 2 - SMKN 1 Luragung</div>
+            <div class="menu-toggle" id="menuToggle">&#9776;</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#profil">Profil Kelas</a></li>
+                <li><a href="#jadwal">Jadwal</a></li>
+                <li><a href="#kegiatan">Kegiatan</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        <!-- Halaman Beranda -->
+        <section id="home">
+            <h1>Selamat Datang di Kelas XII TKRO 2</h1>
+            <div class="icon">&#127979;</div> <!-- Ikon Sekolah -->
+            <div class="home-content">
+                <div class="sambutan">
+                    <p>Hai sahabat XII TKRO 2! Semoga website ini menjadi media informasi yang bermanfaat untuk kita semua. Tetap semangat belajar dan jaga kebersihan kelas ya! - Pak Dian</p>
+                </div>
+                <img src="fotobersama.jpg" alt="Foto Bersama"class="foto-kelas">
+            </div>
+        </section>
+
+        <!-- Halaman Profil Kelas -->
+        <section id="profil" style="margin-top: 4rem;">
+            <h2>Profil Kelas</h2>
+            <div class="icon">&#128100;</div> <!-- Ikon Orang -->
+            <div class="profil-wali">
+                <h3>Wali Kelas</h3>
+                <p>Nama: Pak Dian</p>
+                <p>Akun TikTok: <a href="https://tiktok.com/@kangdiangemoy" target="_blank" style="color: var(--biru-tua);">@kangdiangemoy</a></p>
+            </div>
+            <div class="daftar-siswa">
+                <h3>Daftar Siswa</h3>
+                <ul>
+                    <li>1. Achmad Pramudiya</li>
+                    <li>2. Aditya</li>
+                    <li>4. Alfian Nursyahdad</li>
+                    <li>5. Ariza Kaevani Gymnastiar</li>
+                    <li>6. Dihan Agung Permana</li>
+                    <li>7. Dzikri Syahrul Ramadhan</li>
+                    <li>8. Fajar Habibie</li>
+                    <li>9. Febri Firman Nugraha</li>
+                    <li>10. Harun Arasyid</li>
+                    <li>11. Irlan Maulana</li>
+                    <li>12. Mario Aditria Rudiansyah</li>
+                    <li>13. Muhamad Andilah</li>
+                    <li>14. Muhamad Anim Palahudin</li>
+                    <li>15. Muhamad Aprijal</li>
+                    <li>16. Muhaman Fahmi Ali</li>
+                    <li>17. Muhamad Irfan Farhani</li>
+                    <li>18. Muhamad Saripudin</li>
+                    <li>19. Muhamad Zidan Priansyah</li>
+                    <li>21. Osa Permana</li>
+                    <li>22. Pebrian Pratama</li>
+                    <li>23. Rafi Renaldi</li>
+                    <li>24. Rendi Irawan</li>
+                    <li>25. Repan Destian</li>
+                    <li>26. Ridho Afrian Hilmi</li>
+                    <li>27. Sahrul Hidayat</li>
+                    <li>28. Sandi Setiawan</li>
+                    <li>29. Satria Diwa Munggaran</li>
+                    <li>30. Vixri Ramadhani</li>
+                    <li>31. Wandri Andiansyah Putra</li>
+                    <li>32. Wisnu Hardiansyah</li>
+                    <li>33. Yoga Prasatrio</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Halaman Jadwal Pelajaran -->
+        <section id="jadwal" style="margin-top: 4rem;">
+            <h2>Jadwal Pelajaran</h2>
+            <div class="icon">&#128197;</div> <!-- Ikon Buku -->
+            <table class="jadwal-tabel">
+                <tr>
+                    <th>Hari</th>
+                    <th>Jam Pelajaran</th>
+                </tr>
+                <tr>
+                    <td>Senin</td>
+                    <td>KK 11, PKDK</td>
+                </tr>
+                <tr>
+                    <td>Selasa</td>
+                    <td>KK 11, KK 11</td>
+                </tr>
+                <tr>
+                    <td>Rabu</td>
+                    <td>KK 11, MTK, PIL, KK 11</td>
+                </tr>
+                <tr>
+                    <td>Kamis</td>
+                    <td>BIN, PAI, ING, PP</td>
+                </tr>
+                <tr>
+                    <td>Jum'at</td>
+                    <td>BJEP, WAKEL</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Halaman Kegiatan -->
+        <section id="kegiatan" style="margin-top: 4rem;">
+            <h2>Kegiatan Kelas (Kebersihan)</h2>
+            <div class="icon">&#128469;</div> <!-- Ikon Sapu -->
+            <div class="kegiatan-card">
+                <h3>Kegiatan Kebersihan</h3>
+                <img src="kegiatan.jpg" alt="Kegiatan Kebersihan" class="kegiatan-foto">
+                <p>Seluruh siswa berpartisipasi membersihkan kelas, taman, dan toilet sekolah. Semua area menjadi bersih dan nyaman untuk belajar!</p>
+            </div>
+        </section>
+
+        <!-- Halaman Kontak -->
+        <section id="kontak" style="margin-top: 4rem;">
+            <h2>Kontak</h2>
+            <div class="icon">&#128231;</div> <!-- Ikon WA -->
+            <div class="kontak-link">
+                <p>Hubungi kami via grup WhatsApp: <a href="LINK_GRUP_WA_DI_SINI" target="_blank">Grup WA Kelas XII TKRO 2</a></p>
+                <p></p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Kelas XII TKRO 2 - SMKN 1 Luragung. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <!-- JavaScript untuk Navigasi Mobile -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Tutup navigasi saat klik link (pada mobile)
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
